@@ -25,6 +25,7 @@ var SETTINGS={
     canvasSizePx: 512 //resolution of the 2D canvas in pixels
 };
 
+
 //some globalz :
 var CV, CANVAS2D, CTX, GL, CANVASTEXTURE, CANVASTEXTURENEEDSUPDATE=false, PROJMATRIX, PROJMATRIXNEEDSUPDATE=true,
     VBO_VERTEX, VBO_FACES, SHADERCANVAS, SHADERVIDEO, VIDEOTEXTURE, MOVMATRIX=create_mat4Identity(), MOVMATRIXINV=create_mat4Identity();
@@ -445,6 +446,5 @@ function main(){
         } //end callbackTrack()
     }); //end JEEFACEFILTERAPI.init call
 } //end main()
-
 
 
