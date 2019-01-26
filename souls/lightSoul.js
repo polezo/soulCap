@@ -1,7 +1,12 @@
 "use strict";
 
-let THREECAMERA;
+// SETTINGS of this demo :
+const SETTINGS = {
+    cameraFOV: 40,      // in degrees, 3D camera FOV
+    pivotOffsetYZ: [-0.2, -0.5], // XYZ of the distance between the center of the cube and the pivot
+};
 
+let THREECAMERA;
 
 
 // callback : launched if a face is detected or lost. TODO : add a cool particle effect WoW !
@@ -13,27 +18,33 @@ function detect_callback(faceIndex, isDetected) {
     }
 }
 
+
 // build the 3D. called once when Jeeliz Face Filter is OK
 function init_threeScene(spec) {
     const threeStuffs = THREE.JeelizHelper.init(spec, detect_callback);
-
-   // Create the JSONLoader for our hat
-    const loader = new THREE.BufferGeometryLoader();
-
-
-
-
+  
+  let HATOBJ3D = new THREE.Object3D();
+  
+ 
      // CREATE A torus
     const torusGeometry = new THREE.TorusBufferGeometry(1,.1,16,60);
     const torusMat = new THREE.MeshBasicMaterial({
                 map: new THREE.TextureLoader().load("models/goldFoilTexture.jpg")
-				
            });
-    const threeTorus = new THREE.Mesh(torusGeometry, torusMat);
-     threeStuffs.faceObject.add(threeTorus);
-	 threeTorus.rotation.set(1.4, 0, 0);
-	threeTorus.position.set(0, 2, -.45);
+		   
+    const THREETORUS = new THREE.Mesh(torusGeometry, torusMat);
+     threeStuffs.faceObject.add(THREETORUS);
+	 THREETORUS.rotation.set(1.4, 0, 0);
+	THREETORUS.position.set(0, 2, -.45);
+	THREETORUS.frustumCulled = false;
+            THREETORUS.side = THREE.DoubleSide;
 
+
+ 
+    // CREATE A LIGHT
+    const ambient = new THREE.AmbientLight(0xffffff, 0.8);
+    threeStuffs.scene.add(ambient);
+ 
 
     //CREATE THE CAMERA
     const aspecRatio=spec.canvasElement.width / spec.canvasElement.height;
@@ -51,6 +62,7 @@ function main(){
 } //end main()
 
 function init_faceFilter(videoSettings){
+	
     JEEFACEFILTERAPI.init({
         followZRot: true,
         canvasId: 'jeeFaceFilterCanvas',
@@ -73,3 +85,7 @@ function init_faceFilter(videoSettings){
     }); //end JEEFACEFILTERAPI.init call
 } // end main()
 
+function soul_img(el) {
+  var image = jeeFaceFilterCanvas.toDataURL("image/png");
+     el.href = image;
+}

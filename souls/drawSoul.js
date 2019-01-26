@@ -12,6 +12,7 @@ at the next rendering.
 
 
 //SETTINGS of this demo :
+
 var SETTINGS={
     strokeStyle: 'black',
     rotationOffsetX: 0, //negative -> look upper. in radians
@@ -444,4 +445,6 @@ function main(){
         } //end callbackTrack()
     }); //end JEEFACEFILTERAPI.init call
 } //end main()
+
+
 

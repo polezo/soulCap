@@ -6,7 +6,7 @@
 <style type="text/css">
 <!--
 body {
-	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	font: 85%/1.2 Verdana, Arial, Helvetica, sans-serif;
 	background-color: black;
 
 	color: white;
@@ -45,7 +45,7 @@ a:hover, a:active, a:focus {
 .content {
 	
 background-color: black;
-	padding: 10px 0;
+	padding: 15px;
 	width:100%;
 	top:50%;
 	left:50%;
@@ -54,12 +54,13 @@ background-color: black;
 }
 
 a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-    padding:7px;
+    
+    padding:25px;
     text-decoration: none;
-    color: initial;
+    color: white;
+	background-image:url(buttonUnpressed.png);
+	background-size:140px, 64px;
+	background-position:center;
 	
 }
 
@@ -68,11 +69,13 @@ a.button {
 
 <body>
   <div class="content">
-    <h1>SoulCap</h1>
+  <img src="soulCapLogo.png" height="150" width="780" />
+    
     <br />
-            <a href="souls/darkSoul.html" class="button">Soul Capture</a>
-        <a href="/index.html" class="button">Soul Store</a>
-        <a href="/index.html" class="button">Soul Play</a>
+        <a href="souls/darkSoul.html" class="button">Soul Capture</a>
+        <a href="/index.html" class="button" style="padding-left: 30px;">Soul Store</a>
+        <a href="/index.html" class="button">Soul Library</a>
+        <a href="/index.html" class="button" style="padding-left: 38px;">Soul Play</a>
    </div>
     
   </div>
