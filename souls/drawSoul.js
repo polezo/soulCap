@@ -25,6 +25,41 @@ var SETTINGS={
     canvasSizePx: 512 //resolution of the 2D canvas in pixels
 };
 
+var strokeColor = 0;
+
+function cycleColor(){
+	if (strokeColor == 0) {
+	CTX.strokeStyle = 'red';
+	strokeColor++;
+	} else if(strokeColor == 1) {
+		CTX.strokeStyle = 'orange';
+		strokeColor++;
+		}
+		else if(strokeColor == 2 ) {
+			CTX.strokeStyle = 'yellow';
+			strokeColor++;
+		}
+		else if(strokeColor == 3 ) {
+			CTX.strokeStyle = 'green';
+			strokeColor++;
+		}
+		else if (strokeColor == 4) {
+			CTX.strokeStyle = 'blue';
+			strokeColor++;
+		}
+		else if (strokeColor == 5) {
+			CTX.strokeStyle = 'purple';
+			strokeColor++;
+		}
+		else if (strokeColor == 6) {
+			CTX.strokeStyle = 'white';
+			strokeColor++;
+		}
+		else if (strokeColor == 7) {
+			CTX.strokeStyle = 'black';
+			strokeColor = 0;
+		}
+}
 
 //some globalz :
 var CV, CANVAS2D, CTX, GL, CANVASTEXTURE, CANVASTEXTURENEEDSUPDATE=false, PROJMATRIX, PROJMATRIXNEEDSUPDATE=true,
