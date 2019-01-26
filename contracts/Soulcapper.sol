@@ -50,7 +50,7 @@ contract Soulcapper{
   //Take a string for the url to the captured image.
   function captureSoul(address _to, String _URI, uint256 _type) public payable{
     //require the correct payment
-    //TODO, this is a bit complex, need help
+    //TODO, this is a bit complex, need help Todo
 
     //require that the user has not exceeded max souls per body, via captures tracker
     require(captures_tracker[msg.sender] < max_souls_per_body);
