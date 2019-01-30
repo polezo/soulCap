@@ -17,6 +17,20 @@ contract Soulcapper is ERC721{
    uint256 private max_souls_per_body;
    //TODO set small trading fee
 
+  //================================= Events ================================= //
+  event zrxChecked(
+        address indexed _holder,
+        uint indexed _bal,
+        bool _result);
+
+  event Capped(
+         address indexed _from,
+         string _name,
+         uint indexed _id,
+         uint _value
+       );
+
+
    // ================================= Main Structs and Modifiers =========================== //
   struct Soul{
     address body;
@@ -27,13 +41,6 @@ contract Soulcapper is ERC721{
 
    mapping(uint => Soul) public souls;
    mapping(address => uint256) public captures_tracker;
-
-   event Capped(
-    address indexed _from,
-    string _name,
-    uint indexed _id,
-    uint _value
-  );
 
   modifier onlyOwner() {
       require(msg.sender == owner);
@@ -53,11 +60,14 @@ contract Soulcapper is ERC721{
    //Helper check to see if the user has erc20
    function hasZRX(address user) public view returns(bool){
      ERC20 instance = ERC20(ZRX_erc20_contrct);
+     bool result;
      if( instance.balanceOf(user) > 0){
-       return true;
+       result = true;
      }else{
-       return false;
+       result = false;
      }
+     emit zrxChecked(user, instance.balanceOf(user), result);
+     return result;
    }
 
 
