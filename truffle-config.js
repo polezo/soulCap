@@ -22,7 +22,8 @@
 // const infuraKey = "fj4jll3k.....";
 //
  const fs = require('fs');
- const pk = "3A4233398879F72F0413FCF6B469D4367D52F3FBC01A2C3A5F902AE5C9416877";
+ const pk = "3A4233398879F72F0413FCF6B469D4367D52F3FBC01A2C3A5F902AE5C9416877"; //public 0x284979df920482b1ED26147e46846c4B76f0B15B
+//dont send real ETH here, just for testing.
 
 module.exports = {
   /**
