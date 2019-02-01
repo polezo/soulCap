@@ -2,7 +2,6 @@ pragma solidity ^0.5.0;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-//TODO add iep 20 interface
 
 contract Soulcapper is ERC721{
 
@@ -30,6 +29,14 @@ contract Soulcapper is ERC721{
          uint _value
        );
 
+  event Paid(
+    uint indexed _amount
+  );
+
+  event MaxCount(
+    uint indexed _have,
+    uint indexed _made
+  );
 
    // ================================= Main Structs and Modifiers =========================== //
   struct Soul{
@@ -54,11 +61,11 @@ contract Soulcapper is ERC721{
        minting_fee_wei = 5e15;
        max_souls_per_body = 3;
        ZRX_discount_percent = 50;
-        ZRX_erc20_contrct = 0x61175b02C97c13185ad10de68498b9874a7ce4a1;
+       ZRX_erc20_contrct = 0x61175b02C97c13185ad10de68498b9874a7ce4a1;
    }
 
    //Helper check to see if the user has erc20
-   function hasZRX(address user) public view returns(bool){
+   function hasZRX(address user) public returns(bool){
      ERC20 instance = ERC20(ZRX_erc20_contrct);
      bool result;
      if( instance.balanceOf(user) > 0){
@@ -81,10 +88,12 @@ contract Soulcapper is ERC721{
     if(hasZRX(msg.sender)){
       fee = fee - (fee * ZRX_discount_percent / 100); //update fee for ZRX users
     }
-    require(msg.value >= fee);
+    //require(msg.value >= fee); //TODO put back
+    emit Paid(msg.value);
 
     //require that the user has not exceeded max souls per body, via captures tracker
-    require(captures_tracker[msg.sender] < max_souls_per_body);
+    //require(captures_tracker[msg.sender] < max_souls_per_body);
+    emit MaxCount(captures_tracker[msg.sender], max_souls_per_body);
 
     //take url to cap image as string
     _mint(_to, itemId); // Use ERC 721 interface
