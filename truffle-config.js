@@ -40,10 +40,10 @@ module.exports = {
 
     rinkeby: {
       provider: function() {
-        return new HDWalletProvider(pk, "https://rinkeby.infura.io/v3/abdaccf7ac5b4f9a868c8b01929407a3")
+        return new HDWalletProvider(pk, "https://rinkeby.infura.io/v3/be55374beaa84226a8844647463ed361")
       },
       network_id: 4
-    },
+    }
 
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.

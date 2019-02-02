@@ -18,24 +18,26 @@ contract Soulcapper is ERC721{
 
   //================================= Events ================================= //
   event zrxChecked(
-        address indexed _holder,
-        uint indexed _bal,
+        address _holder,
+        uint  _bal,
         bool _result);
 
   event Capped(
-         address indexed _from,
+         address _from,
          string _name,
-         uint indexed _id,
+         uint _id,
+         string _uri,
          uint _value
        );
 
   event Paid(
-    uint indexed _amount
+    uint _amount,
+    uint _fee
   );
 
   event MaxCount(
-    uint indexed _have,
-    uint indexed _made
+    uint  _have,
+    uint  _of
   );
 
    // ================================= Main Structs and Modifiers =========================== //
@@ -89,7 +91,7 @@ contract Soulcapper is ERC721{
       fee = fee - (fee * ZRX_discount_percent / 100); //update fee for ZRX users
     }
     //require(msg.value >= fee); //TODO put back
-    emit Paid(msg.value);
+    emit Paid(msg.value, fee);
 
     //require that the user has not exceeded max souls per body, via captures tracker
     //require(captures_tracker[msg.sender] < max_souls_per_body);
@@ -101,7 +103,7 @@ contract Soulcapper is ERC721{
     souls[itemId] = instance;
 
     //events and book keeping
-    emit Capped(msg.sender, _name, itemId, msg.value);
+    emit Capped(msg.sender, _name, itemId, _URI, msg.value);
     itemId++; //increment id
     captures_tracker[msg.sender]++;// increment total number of souls capped from this address
   }
@@ -125,15 +127,18 @@ contract Soulcapper is ERC721{
   }
 
   //allow owner to cashout any erc20 token sent to this address
-  function withdraw(address[] memory erc20_contracts) public onlyOwner {
+  function withdraw(address[] memory erc20_contracts) public onlyOwner returns(bool result){
+      bool succ;
+
       for (uint i=0; i<erc20_contracts.length; i++) {
 
             ERC20 instance = ERC20(erc20_contracts[i]);
 
             uint256 _val = instance.balanceOf(address(this));
 
-            bool succ = instance.transfer(msg.sender, _val);
+            succ = instance.transfer(msg.sender, _val);
         }
+        return succ;
   }
 
   function setEverything(uint256 _transfer_percent_fee, uint256 _minting_fee_wei, address _ZRX_erc20_contrct, uint16 _ZRX_discount_percent, uint256 _max_souls_per_body) public onlyOwner {
