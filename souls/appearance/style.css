@@ -28,7 +28,7 @@ a.button {
 div.buttonAlign {
 	z-index: 11;
     position: absolute; 
-    left: 45%;
+    left: 38%;
     top: 95%;
 	}
 @media (max-width: 787px) {

@@ -22,6 +22,103 @@ function detect_callback(faceIndex, isDetected) {
 // build the 3D. called once when Jeeliz Face Filter is OK
 function init_threeScene(spec) {
     const threeStuffs = THREE.JeelizHelper.init(spec, detect_callback);
+ 
+ var clock = new THREE.Clock();
+
+var texture = new THREE.TextureLoader().load('models/liteRays-min.png');
+var annie = new TextureAnimator(texture, 6, 4, 24, 60); // texture, #horiz, #vert, #total, duration.
+
+
+var geometry = new THREE.CylinderGeometry(3,3, 3, 38, 2, true, 4.8, 3.4);
+var material = new THREE.MeshBasicMaterial( {map: texture, transparent: true} );
+var cube = new THREE.Mesh( geometry, material );
+cube.position.set(0,.5,-3);
+cube.scale.multiplyScalar(1.5);
+cube.rotation.set(0,0,0);
+cube.renderOrder=1000;
+cube.frustumCulled=false;
+threeStuffs.faceObject.add( cube );
+
+    // CREATE THE VIDEO BACKGROUND
+    function create_mat2d(threeTexture, isTransparent){ //MT216 : we put the creation of the video material in a func because we will also use it for the frame
+        return new THREE.RawShaderMaterial({
+            depthWrite: false,
+            depthTest: false,
+            transparent: isTransparent,
+            vertexShader: "attribute vec2 position;\n\
+                varying vec2 vUV;\n\
+                void main(void){\n\
+                    gl_Position=vec4(position, 0., 1.);\n\
+                    vUV=0.5+0.5*position;\n\
+                }",
+            fragmentShader: "precision lowp float;\n\
+                uniform sampler2D samplerVideo;\n\
+                varying vec2 vUV;\n\
+                void main(void){\n\
+                    gl_FragColor=texture2D(samplerVideo, vUV);\n\
+                }",
+             uniforms:{
+                samplerVideo: { value: threeTexture }
+             }
+        });
+    }
+
+    //MT216 : create the frame. We reuse the geometry of the video
+    const frameMesh=new THREE.Mesh(threeStuffs.videoMesh.geometry,  create_mat2d(new THREE.TextureLoader().load('models/rays.png'), true))
+    frameMesh.renderOrder = 999; // render last
+    frameMesh.frustumCulled = false;
+    threeStuffs.scene.add(frameMesh);
+
+var animate = function () {
+	requestAnimationFrame( animate );
+	var delta = clock.getDelta(); 
+
+	annie.update(delta * 1000);
+
+	
+};
+
+animate();
+
+
+function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDuration) 
+{	
+	// note: texture passed by reference, will be updated by the update function.
+		
+	this.tilesHorizontal = tilesHoriz;
+	this.tilesVertical = tilesVert;
+	// how many images does this spritesheet contain?
+	//  usually equals tilesHoriz * tilesVert, but not necessarily,
+	//  if there at blank tiles at the bottom of the spritesheet. 
+	this.numberOfTiles = numTiles;
+	texture.wrapS = texture.wrapT = THREE.RepeatWrapping; 
+	texture.repeat.set( 1 / this.tilesHorizontal, 1 / this.tilesVertical );
+
+	// how long should each image be displayed?
+	this.tileDisplayDuration = tileDispDuration;
+
+	// how long has the current image been displayed?
+	this.currentDisplayTime = 0;
+
+	// which image is currently being displayed?
+	this.currentTile = 0;
+		
+	this.update = function( milliSec )
+	{
+		this.currentDisplayTime += milliSec;
+		while (this.currentDisplayTime > this.tileDisplayDuration)
+		{
+			this.currentDisplayTime -= this.tileDisplayDuration;
+			this.currentTile++;
+			if (this.currentTile == this.numberOfTiles)
+				this.currentTile = 0;
+			var currentColumn = this.currentTile % this.tilesHorizontal;
+			texture.offset.x = currentColumn / this.tilesHorizontal;
+			var currentRow = Math.floor( this.currentTile / this.tilesHorizontal );
+			texture.offset.y = currentRow / this.tilesVertical;
+		}
+	};
+}	
   
   let HATOBJ3D = new THREE.Object3D();
   

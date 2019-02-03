@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://instant.0x.org/instant.js"></script>
+	
+          <title>Soul Store</title>
+    </head>
+    <body>
+    <h1>Welcome to the Soul Store</h1>
+    
+    <h2>No Fees for Wallets Containing ZRX.</h2>
+    <p>No ZRX? Buy some here.</p>
+			<script type='text/javascript'>
+			function renderZeroExInstant() {
+            zeroExInstant.render(
+			{
+                orderSource: 'https://api.radarrelay.com/0x/v2/',
+                availableAssetDatas: ['0xf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498']
+                }, 'body');
+			}
+            </script>
+   <button onClick="renderZeroExInstant()">Buy ZRX</button> 
+        </body>
+    </html>
