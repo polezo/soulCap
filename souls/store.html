@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <script src="https://instant.0x.org/instant.js"></script>
-	
+		<link rel="stylesheet" href="appearance/style.css" type="text/css" />
           <title>Soul Store</title>
     </head>
     <body>
@@ -16,10 +16,22 @@
             zeroExInstant.render(
 			{
                 orderSource: 'https://api.radarrelay.com/0x/v2/',
-                availableAssetDatas: ['0xf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498']
-                }, 'body');
+                availableAssetDatas: ['0xf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498'],
+				defaultSelectedAssetData:'0xf47261b0000000000000000000000000e41d2489571d322189246dafa5ebde1f4699f498'
+			                }, 'body');
 			}
             </script>
    <button onClick="renderZeroExInstant()">Buy ZRX</button> 
+   <br>
+   <br>   
+   <div class="allSouls">
+   	<div id="mostRecentSoul" class="soulForSale">
+     
+   	<img id="mostRecentSoulImg" src="images/placeHolder.png" class="soulImage"</img>
+    <input type="button" id="color" onclick="buySoul(_;" value="Buy Button" class="buyButton" />
+   			<div class="priceContainers" id="price1">0.4 Eth
+    		</div>
+    	</div>
+    </div>
         </body>
     </html>

@@ -64,7 +64,7 @@ threeStuffs.faceObject.add( cube );
     }
 
     //MT216 : create the frame. We reuse the geometry of the video
-    const frameMesh=new THREE.Mesh(threeStuffs.videoMesh.geometry,  create_mat2d(new THREE.TextureLoader().load('models/rays.png'), true))
+    const frameMesh=new THREE.Mesh(threeStuffs.videoMesh.geometry,  create_mat2d(new THREE.TextureLoader().load('models/liteRays-min.png'), true))
     frameMesh.renderOrder = 999; // render last
     frameMesh.frustumCulled = false;
     threeStuffs.scene.add(frameMesh);

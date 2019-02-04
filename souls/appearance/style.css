@@ -16,15 +16,21 @@ body {overflow: auto; overflow-y: auto;
     width: 100vmin;
     transform: translate(-50%, -50%) rotateY(180deg);
 } 
-a.button {
+.button {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
     padding:7px;
     text-decoration: none;
     color: initial;
-	
 }
+
+input[type="button"] {padding:5px;}
+
+.button:hover {color:blue;}
+	
 div.buttonAlign {
 	z-index: 11;
     position: absolute; 
@@ -37,4 +43,31 @@ div.buttonAlign {
         top: 60px;
         transform: rotateY(180deg);
     }
+}
+
+.soulImage {
+	height:200px;
+	width:200px;
+}
+.soulForSale{
+
+}
+.priceContainers {
+	height:18px;
+	width:50px;
+	background-color: white;
+	position:absolute;
+	left:120px;
+	top:365px;
+	z-index: 2;
+	padding:3px;
+	
+	text-align:center;
+
+}
+.buyButton {	
+	position:absolute;
+	left:30px;
+	top:360px;
+	z-index: 2;
 }

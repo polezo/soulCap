@@ -20,7 +20,7 @@ var SETTINGS={
     pivotOffsetYZ: [0.2,0.32], //XYZ of the distance between the center of the cube and the pivot
     detectionThreshold: 0.75, //sensibility, between 0 and 1. Less -> more sensitive
     detectionHysteresis: 0.05,
-    scale: [1,1.24], //scale of the 2D canvas along horizontal and vertical 2D axis
+    scale: [1.5,1.5], //scale of the 2D canvas along horizontal and vertical 2D axis
     offsetYZ: [-0.1,-0.2], //offset of the 2D canvas along vertical and depth 3D axis
     canvasSizePx: 512 //resolution of the 2D canvas in pixels
 };
@@ -482,4 +482,8 @@ function main(){
     }); //end JEEFACEFILTERAPI.init call
 } //end main()
 
+function soul_img(el) {
+  var image = jeeFaceFilterCanvas.toDataURL("image/png");
+     el.href = image;
+}
 
