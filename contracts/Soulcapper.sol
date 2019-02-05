@@ -20,14 +20,15 @@ contract Soulcapper is ERC721{
   //================================= Events ================================= //
   event zrxChecked(
         address indexed _holder,
-        uint indexed _bal,
+        uint  _bal,
         bool _result);
 
   event Capped(
          address indexed _from,
          string _name,
          uint indexed _id,
-         uint _value
+         uint _value,
+         string _uri
        );
 
 
@@ -54,19 +55,20 @@ contract Soulcapper is ERC721{
        minting_fee_wei = 5e15;
        max_souls_per_body = 3;
        ZRX_discount_percent = 50;
-        ZRX_erc20_contrct = 0x61175b02C97c13185ad10de68498b9874a7ce4a1;
+       ZRX_erc20_contrct = 0x61175b02C97c13185ad10de68498b9874a7ce4a1;
    }
 
    //Helper check to see if the user has erc20
-   function hasZRX(address user) public view returns(bool){
+   function hasZRX(address user) public returns(bool){
      ERC20 instance = ERC20(ZRX_erc20_contrct);
      bool result;
-     if( instance.balanceOf(user) > 0){
+     uint bal = instance.balanceOf(user);
+     if(bal > 0){
        result = true;
      }else{
        result = false;
      }
-     emit zrxChecked(user, instance.balanceOf(user), result);
+     emit zrxChecked(user, bal, result);
      return result;
    }
 
@@ -92,7 +94,7 @@ contract Soulcapper is ERC721{
     souls[itemId] = instance;
 
     //events and book keeping
-    emit Capped(msg.sender, _name, itemId, msg.value);
+    emit Capped(msg.sender, _name, itemId, msg.value, _URI);
     itemId++; //increment id
     captures_tracker[msg.sender]++;// increment total number of souls capped from this address
   }

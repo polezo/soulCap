@@ -42,7 +42,10 @@ module.exports = {
       provider: function() {
         return new HDWalletProvider(pk, "https://rinkeby.infura.io/v3/abdaccf7ac5b4f9a868c8b01929407a3")
       },
-      network_id: 4
+      network_id: 4,
+      gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
+      gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
+      from: 0x284979df920482b1ED26147e46846c4B76f0B15B,
     }
 
     // Useful for testing. The `development` name is special - truffle uses it by default
