@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body {
+	font: 85%/1.2 Verdana, Arial, Helvetica, sans-serif;
+	background-color: black;
+
+	color: white;
+	text-align:center;
+}
+
+h1 { 
+
+font-size:80px;
+
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	
+	padding-right: 15px;
+	padding-left: 15px; 
+}
+a img {
+	border: none;
+}
+
+a:link {
+	color: #42413C;
+	text-decoration: underline; 
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { 
+	text-decoration: none;
+}
+
+
+
+.content {
+	
+background-color: black;
+	padding: 15px;
+	width:100%;
+	top:50%;
+	left:50%;
+	margin-top: 100px;
+	
+}
+
+a.button {
+    
+    padding:25px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+	background-image:url(buttonUnpressed.png);
+	background-size:140px, 64px;
+	background-position:center;
+	}
+
+a.button:hover {
+	color:white;
+}
+
+a.button:active {
+	background-image:url(buttonPressed.png)
+}
+
+#soulStore {padding-right:33px;}
+
+#soulPlay {padding-right:39px;}

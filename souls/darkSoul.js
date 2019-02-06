@@ -62,7 +62,7 @@ function init_threeScene(spec) {
                 varying float vY, vNormalDotZ;\n\
                 void main() {\n\
                     vec3 videoColor=texture2D(samplerVideo, vUVvideo).rgb;\n\
-                    float darkenCoeff=smoothstep(-0.5, 0.5, vY);\n\
+                    float darkenCoeff=smoothstep(-0.8, 0.8, vY);\n\
                     float borderCoeff=smoothstep(0.0, 1.0, vNormalDotZ);\n\
                     gl_FragColor=vec4(videoColor*(1.-darkenCoeff), borderCoeff );\n\
                     // gl_FragColor=vec4(borderCoeff, 0., 0., 1.);\n\
@@ -169,12 +169,7 @@ threeStuffs.faceObject.add(plane);
 
             threeStuffs.faceObject.add(hatMesh);
 		
-	
-
-
-
-
-			
+				
 
       }  )
 			
