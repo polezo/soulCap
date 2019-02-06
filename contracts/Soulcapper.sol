@@ -90,7 +90,7 @@ contract Soulcapper is ERC721{
     if(hasZRX(msg.sender)){
       fee = fee - (fee * ZRX_discount_percent / 100); //update fee for ZRX users
     }
-    //require(msg.value >= fee); //TODO put back
+    require(msg.value >= fee); //TODO put back
     emit Paid(msg.value, fee);
 
     //require that the user has not exceeded max souls per body, via captures tracker
