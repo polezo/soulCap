@@ -22,7 +22,7 @@
 // const infuraKey = "fj4jll3k.....";
 //
  const fs = require('fs');
- const pk = "3A4233398879F72F0413FCF6B469D4367D52F3FBC01A2C3A5F902AE5C9416877"; //public 0x284979df920482b1ED26147e46846c4B76f0B15B
+ const pk = ""; //public 0x284979df920482b1ED26147e46846c4B76f0B15B
 //dont send real ETH here, just for testing.
 
 module.exports = {
@@ -46,8 +46,16 @@ module.exports = {
       from: "0x284979df920482b1ED26147e46846c4B76f0B15B",
       gas: 7000000,
       gasPrice: 100000000000
-    }//0x250935650bbfefb13e370e0a8cc78318ed1c8286a802ef07f6ad889abb5d733b
-
+    },//0x3ac7b049068faad0eaf2de9299f26df2d68f769f6d99b611023e6692c5241aac public vars, require error messages, all reqs on
+    // main: {
+    //   provider: function() {
+    //     return new HDWalletProvider(pk, "")
+    //   },
+    //   network_id: 1,
+    //   from: "",
+    //   gas: 5000000,
+    //   gasPrice: 3000000000
+    // }
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal

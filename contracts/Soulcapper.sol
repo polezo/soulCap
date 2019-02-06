@@ -7,13 +7,13 @@ contract Soulcapper is ERC721{
 
   //track
   //TODO getters and setters with owner only where appropriet
-   uint256 private transfer_percent_fee_over_ten;
-   uint256 private minting_fee_wei;
-   address private owner;
+   uint256 transfer_percent_fee_over_ten;
+   uint256 minting_fee_wei;
+   address owner;
    uint256 itemId = 1; //must be set to 1 as default.
-   address private ZRX_erc20_contrct;
-   uint16 private ZRX_discount_percent;
-   uint256 private max_souls_per_body;
+   address ZRX_erc20_contrct;
+   uint16 ZRX_discount_percent;
+   uint256 max_souls_per_body;
    //TODO set small trading fee
 
   //================================= Events ================================= //
@@ -52,7 +52,7 @@ contract Soulcapper is ERC721{
    mapping(address => uint256) public captures_tracker;
 
   modifier onlyOwner() {
-      require(msg.sender == owner);
+      require(msg.sender == owner, "you must be the owner.");
       _;
   }
 
@@ -90,11 +90,11 @@ contract Soulcapper is ERC721{
     if(hasZRX(msg.sender)){
       fee = fee - (fee * ZRX_discount_percent / 100); //update fee for ZRX users
     }
-    require(msg.value >= fee); //TODO put back
+    require(msg.value >= fee, "fee was too low."); //TODO put back
     emit Paid(msg.value, fee);
 
     //require that the user has not exceeded max souls per body, via captures tracker
-    //require(captures_tracker[msg.sender] < max_souls_per_body);
+    require(captures_tracker[msg.sender] < max_souls_per_body, "too many captures.");
     emit MaxCount(captures_tracker[msg.sender], max_souls_per_body);
 
     //take url to cap image as string
