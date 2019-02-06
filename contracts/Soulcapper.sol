@@ -12,7 +12,7 @@ contract Soulcapper is ERC721{
    uint256 private minting_fee_wei;
    address private owner;
    uint256 itemId = 1; //must be set to 1 as default.
-   address private ZRX_erc20_contrct;
+   address private ZRX_erc20_contrct = 0x61175b02C97c13185ad10de68498b9874a7ce4a1;
    uint16 private ZRX_discount_percent;
    uint256 private max_souls_per_body;
    //TODO set small trading fee
@@ -25,18 +25,18 @@ contract Soulcapper is ERC721{
 
   event Capped(
          address indexed _from,
-         string _name,
+         bytes32 _name,
          uint indexed _id,
          uint _value,
-         string _uri
+         bytes32 _uri
        );
 
 
    // ================================= Main Structs and Modifiers =========================== //
   struct Soul{
     address body;
-    string name;
-    string uri;
+    bytes32 name;
+    bytes32 uri;
     uint64 soul_type;
   }
 
@@ -55,7 +55,7 @@ contract Soulcapper is ERC721{
        minting_fee_wei = 5e15;
        max_souls_per_body = 3;
        ZRX_discount_percent = 50;
-       ZRX_erc20_contrct = 0x61175b02C97c13185ad10de68498b9874a7ce4a1;
+       //ZRX_erc20_contrct = ;
    }
 
    //Helper check to see if the user has erc20
@@ -76,19 +76,19 @@ contract Soulcapper is ERC721{
   //===================== functions =================================//
 
   //mint
-  //Take a string for the url to the captured image.
-  function captureSoul(address _to, string memory _name, string memory _URI, uint64 _type) public payable{
+  //Take a bytes32 for the url to the captured image.
+  function captureSoul(address _to, bytes32 _name, bytes32 _URI, uint64 _type) public payable{
     //require the correct payment
     uint fee = minting_fee_wei;
-    if(hasZRX(msg.sender)){
-      fee = fee - (fee * ZRX_discount_percent / 100); //update fee for ZRX users
+     if(hasZRX(msg.sender)){
+       fee = fee - (fee * ZRX_discount_percent / 100); //update fee for ZRX users
     }
-    require(msg.value >= fee);
+    //require(msg.value >= fee);
 
     //require that the user has not exceeded max souls per body, via captures tracker
-    require(captures_tracker[msg.sender] < max_souls_per_body);
+    //require(captures_tracker[msg.sender] < max_souls_per_body);
 
-    //take url to cap image as string
+    //take url to cap image as bytes32
     _mint(_to, itemId); // Use ERC 721 interface
     Soul memory instance = Soul(msg.sender, _name, _URI, _type);
     souls[itemId] = instance;
@@ -100,7 +100,7 @@ contract Soulcapper is ERC721{
   }
 
   //allow the owner of a token to set its name
-  function setName(uint _id, string memory _name) public{
+  function setName(uint _id, bytes32 _name) public{
     require(ownerOf(_id) == msg.sender);
     souls[_id].name = _name;
   }
@@ -137,6 +137,10 @@ contract Soulcapper is ERC721{
     ZRX_erc20_contrct = _ZRX_erc20_contrct;
     ZRX_discount_percent = _ZRX_discount_percent;
     max_souls_per_body = _max_souls_per_body;
+  }
+
+  function five() public view returns(uint){
+      return 5;
   }
 
 }
