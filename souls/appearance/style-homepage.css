@@ -27,7 +27,7 @@ a img {
 
 a:link {
 	color: #42413C;
-	text-decoration: underline; 
+	text-decoration: none; 
 }
 a:visited {
 	color: #6E6C64;
@@ -54,20 +54,55 @@ a.button {
     
     padding:25px;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-	background-image:url(buttonUnpressed.png);
-	background-size:140px, 64px;
-	background-position:center;
+    color: rgba(255,255,255, .75);
+	background-image:url(redButtonSprite.png);
+	background-size:280px, 128px;
+	background-position:-4px;
+	position:relative;
+	right:5px;
 	}
 
 a.button:hover {
-	color:white;
-}
+	color: rgba(255,215,0,1);
+	}
 
 a.button:active {
-	background-image:url(buttonPressed.png)
+		background-position:139px;
+		color: rgba(255,215,0,.75)
 }
 
+.aboutIcon {
+	position:absolute;
+	top:70%;
+	left:47%;
+	}
+a.aboutIcon {
+color:rgba(255,255,255,.75)
+
+}
+a.aboutIcon:hover{
+	color:white}
 #soulStore {padding-right:33px;}
 
-#soulPlay {padding-right:39px;}
+#soulPlay {padding-right:39px;
+background-position:-3px;}
+
+#soulPlay:active {
+	background-position:140px;
+}
+	
+	.footer {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: rgba(255,255,255, .75);
+   text-align: center;
+}
+
+#jeelizLogo {
+	position:relative;
+	top:8px;
+	left:1px;
+}
+	

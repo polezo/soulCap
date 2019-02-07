@@ -31,6 +31,13 @@ input[type="button"] {padding:5px;}
 
 .button:hover {color:blue;}
 	
+	#flashingGif {
+		z-index: 11;
+    position: absolute; 
+    left: 35%;
+    top: 20%;
+	}
+	
 div.buttonAlign {
 	z-index: 11;
     position: absolute; 
@@ -70,4 +77,19 @@ div.buttonAlign {
 	left:30px;
 	top:360px;
 	z-index: 2;
+}
+
+.webCamWarn {
+	background-color:white;
+	color:black;
+	font-size:50px;
+	padding:none;
+	font-weight:900;
+	font-family:Arial, Helvetica, sans-serif;
+	width:600px;
+	text-align:center;
+	left: 34%;
+    top: 10%;
+	position:absolute;
+	}
 }
