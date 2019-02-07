@@ -22,11 +22,11 @@ function detect_callback(faceIndex, isDetected) {
 
 // build the 3D. called once when Jeeliz Face Filter is OK
 function init_threeScene(spec) {
-	
+
 
     const threeStuffs = THREE.JeelizHelper.init(spec, detect_callback);
-	
-	
+
+
 
 	let HATOBJ3D = new THREE.Object3D();
    // Create the JSONLoader for our hat
@@ -85,16 +85,16 @@ function init_threeScene(spec) {
                 FACEMESH.scale.multiplyScalar(1.22);
                 FACEMESH.position.set(0, 0.2, -.8);
                 FACEMESH.rotation.set(-.22, 0, 0);
-				
+
                // HATOBJ3D.add(plane);
 				HATOBJ3D.add(FACEMESH);
                 addDragEventListener(HATOBJ3D);
-				
+
                 threeStuffs.faceObject.add(HATOBJ3D);
-				
-			
+
+
 				            });
-   
+
     // CREATE THE VIDEO BACKGROUND
     function create_mat2d(threeTexture, isTransparent){ //MT216 : we put the creation of the video material in a func because we will also use it for the frame
         return new THREE.RawShaderMaterial({
@@ -136,7 +136,7 @@ threeStuffs.faceObject.add(plane);
             // we create our Hat mesh
             			const mat = new THREE.MeshBasicMaterial({
                 map: new THREE.TextureLoader().load("models/blackHornTexture.jpg")
-				
+
            });
             const hatMesh1 = new THREE.Mesh(horn, mat);
             hatMesh1.scale.multiplyScalar(0.04);
@@ -144,14 +144,14 @@ threeStuffs.faceObject.add(plane);
             hatMesh1.position.set(0.5, 0.82, 0.82);
             hatMesh1.frustumCulled = false;
             hatMesh1.side = THREE.DoubleSide;
-			
-			
+
+
 			hatMesh1.uvsNeedUpdate = true;
-			
+
             threeStuffs.faceObject.add(hatMesh1);
         }
     )
-	
+
 	  loader.load(
         'models/NewHorn.json',
         function (horn2, materials) {
@@ -168,18 +168,18 @@ threeStuffs.faceObject.add(plane);
             hatMesh.side = THREE.DoubleSide;
 
             threeStuffs.faceObject.add(hatMesh);
-		
-				
+
+
 
       }  )
-			
-		
+
+
 	var clock = new THREE.Clock();
 
 var fire = new THREE.TextureLoader().load('models/mySprites5-min.png');
 var annie = new TextureAnimator(fire, 6, 7, 42, 60); // texture, #horiz, #vert, #total, duration.
 
-	
+
 	var fireGeometry = new THREE.CylinderGeometry(1.06,1.02, 2.4, 38, 2, true, 4.8, 3.4);
 				var fireMaterial = new THREE.MeshBasicMaterial( {map: fire, transparent: true} );
 				var fireCylinder = new THREE.Mesh( fireGeometry, fireMaterial );
@@ -189,32 +189,32 @@ var annie = new TextureAnimator(fire, 6, 7, 42, 60); // texture, #horiz, #vert, 
 				fireCylinder.position.set(.05,.5,-1.59);
 				fireCylinder.renderOrder = 999;
 				threeStuffs.faceObject.add (fireCylinder);
-	
-	
+
+
 
 var animate = function () {
 	requestAnimationFrame( animate );
-	var delta = clock.getDelta(); 
+	var delta = clock.getDelta();
 
 	annie.update(delta * 1000);
 
-	
+
 };
 
 animate();
 
 
-function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDuration) 
-{	
+function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDuration)
+{
 	// note: texture passed by reference, will be updated by the update function.
-		
+
 	this.tilesHorizontal = tilesHoriz;
 	this.tilesVertical = tilesVert;
 	// how many images does this spritesheet contain?
 	//  usually equals tilesHoriz * tilesVert, but not necessarily,
-	//  if there at blank tiles at the bottom of the spritesheet. 
+	//  if there at blank tiles at the bottom of the spritesheet.
 	this.numberOfTiles = numTiles;
-	fire.wrapS = texture.wrapT = THREE.RepeatWrapping; 
+	fire.wrapS = texture.wrapT = THREE.RepeatWrapping;
 	fire.repeat.set( 1 / this.tilesHorizontal, 1 / this.tilesVertical );
 
 	// how long should each image be displayed?
@@ -225,7 +225,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 
 	// which image is currently being displayed?
 	this.currentTile = 0;
-		
+
 	this.update = function( milliSec )
 	{
 		this.currentDisplayTime += milliSec;
@@ -241,8 +241,8 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			fire.offset.y = currentRow / this.tilesVertical;
 		}
 	};
-	
-	
+
+
     //CREATE THE CAMERA
     const aspecRatio=spec.canvasElement.width / spec.canvasElement.height;
     THREECAMERA=new THREE.PerspectiveCamera(20, aspecRatio, 0.1, 100);
@@ -281,7 +281,9 @@ function init_faceFilter(videoSettings){
     }); //end JEEFACEFILTERAPI.init call
 }} // end main()
 
+//SAVE image
 function soul_img(el) {
   var image = jeeFaceFilterCanvas.toDataURL("image/png");
      el.href = image;
+
 }
