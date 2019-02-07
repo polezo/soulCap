@@ -1,4 +1,4 @@
-import AssetBuyer from "./node_modules/@0x/asset-buyer";
+import { AssetBuyer } from "./node_modules/@0x/asset-buyer";
 // import {BigNumber} from 'big-number';
 // var BigNumber = require('big-number');
 import BigNumber from "./node_modules/bignumber.js/bignumber.mjs";

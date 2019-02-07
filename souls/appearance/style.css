@@ -8,14 +8,14 @@ body {overflow: auto; overflow-y: auto;
     margin: 0px;}
 #jeeFaceFilterCanvas {
     z-index: 10;
-    position: absolute; 
+    position: absolute;
     max-height: 100%;
     max-width: 100%;
     left: 50%;
     top: 50%;
     width: 100vmin;
     transform: translate(-50%, -50%) rotateY(180deg);
-} 
+}
 .button {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
@@ -30,17 +30,17 @@ body {overflow: auto; overflow-y: auto;
 input[type="button"] {padding:5px;}
 
 .button:hover {color:blue;}
-	
+
 	#flashingGif {
 		z-index: 11;
-    position: absolute; 
+    position: absolute;
     left: 35%;
     top: 20%;
 	}
-	
+
 div.buttonAlign {
 	z-index: 11;
-    position: absolute; 
+    position: absolute;
     left: 38%;
     top: 95%;
 	}
@@ -68,11 +68,11 @@ div.buttonAlign {
 	top:365px;
 	z-index: 2;
 	padding:3px;
-	
+
 	text-align:center;
 
 }
-.buyButton {	
+.buyButton {
 	position:absolute;
 	left:30px;
 	top:360px;
@@ -92,4 +92,46 @@ div.buttonAlign {
     top: 10%;
 	position:absolute;
 	}
+}
+
+.submitter{
+  margin: 15px;
+  color: #fff;
+}
+
+input, label{
+  margin: 5px;
+}
+
+/* start da css for da buttons */
+.btn {
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.btn:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.purple {
+  background-color: #9b59b6;
+  /*the 15px is how high up the button appears*/
+  box-shadow: 0px 15px 0px 0px #82409D;
+}
+
+.purple:hover {
+  background-color: #B573D0;
+}
+
+.purple:active{
+  /*when the button is pressed make it go down from 15 to 8px*/
+  box-shadow: 0px 8px 0px 0px #82409D;
 }

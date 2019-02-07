@@ -11,6 +11,8 @@
 
         <title>SoulCap - Dark Soul</title>
 
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
         <script type="module" src="./createZRXOrders.js"></script>
 
         <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
@@ -32,15 +34,74 @@
         <script src='../../../helpers/addDragEventListener.js'></script>
 
         <link rel="stylesheet" href="appearance/style.css" type="text/css" />
+
+
     </head>
 
     <body onload="main()" style='color: white'>
         <canvas width="600" height="600" id='jeeFaceFilterCanvas'></canvas>
          <div class="buttonAlign">
         <a href="drawSoul.html" class="button">Draw Soul</a>
-        <a href="lightSoul.html" class="button">Light Soul</a>
+        <a href="lightSoul.html" class="button">Light Souls</a>
         <a href="darkSoul2.html" class="button">Toggle Background</a>
            <a id="download" download="mySoul.png" href="" onclick="soul_img(this);" class="button">Capture Soul</a>
         </div>
+        <br>
+        <div class="submitter">
+          <h2>Entomb Soul.</h2>
+          <ol>
+            <li>Capture soul.</li>
+            <li>Host your Soul anywhere. </li>
+            <li>Entomb your soul on Ethereum Blockchain forever</li>
+          </ol>
+          <form class="minter"  >
+              <label for="URI">URL to image</label>
+              <input type="link" name="URI" placeholder="imgur.com/example or storj.io/decentralized-hash" size="35">
+              <br>
+              <label for="name">Name of Soul</label>
+              <input type="text" name="name" placeholder="Soul Name" size="35">
+              <br>
+              <input type="submit" value="Submit" class="btn purple" >
+          </form>
+        </div>
+
+        <script type="text/javascript">
+        window.addEventListener('load', async () => {
+          console.log("loaded page.");
+            // Modern dapp browsers...
+            if (window.ethereum) {
+                window.web3 = new Web3(ethereum);
+                try {
+                    // Request account access if needed
+                    await ethereum.enable();
+                    // Acccounts now exposed
+                    console.log(ethereum.accounts[0]);
+                    //web3.eth.sendTransaction({/* ... */});
+                } catch (error) {
+                    // User denied account access...
+                }
+            }
+            // Legacy dapp browsers...
+            else if (window.web3) {
+                window.web3 = new Web3(web3.currentProvider);
+                // Acccounts always exposed
+                //web3.eth.sendTransaction({/* ... */});
+            }
+            // Non-dapp browsers...
+            else {
+                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+            }
+        });
+        const dataForm = document.forms[0];
+        const link_input = dataForm.elements['URI'];
+        const name_input = dataForm.elements['name'];
+
+        dataForm.onsubmit = function(event) {
+          event.preventDefault();//do not refresh page.
+          var uri = link_input.value;
+          var soulname = name_input.value;
+          console.log(uri)
+        }
+        </script>
     </body>
 </html>
