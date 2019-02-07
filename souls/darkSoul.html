@@ -8,9 +8,11 @@
 	</style>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="content-language" content="en-EN" />
-        
+
         <title>SoulCap - Dark Soul</title>
-        
+
+        <script type="module" src="./createZRXOrders.js"></script>
+
         <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
         <script type="text/javascript" src="../../dist/jeelizFaceFilter.js"></script>
 
@@ -28,19 +30,17 @@
 
         <!-- IMPORT HELPER METHODS -->
         <script src='../../../helpers/addDragEventListener.js'></script>
-        
+
         <link rel="stylesheet" href="appearance/style.css" type="text/css" />
     </head>
-    
+
     <body onload="main()" style='color: white'>
         <canvas width="600" height="600" id='jeeFaceFilterCanvas'></canvas>
          <div class="buttonAlign">
         <a href="drawSoul.html" class="button">Draw Soul</a>
         <a href="lightSoul.html" class="button">Light Soul</a>
         <a href="darkSoul2.html" class="button">Toggle Background</a>
-           <a id="download" download="mySoul.png" href="" onclick="soul_img(this);" class="button">Capture Soul</a> 
+           <a id="download" download="mySoul.png" href="" onclick="soul_img(this);" class="button">Capture Soul</a>
         </div>
     </body>
 </html>
- 
- 
