@@ -50,6 +50,18 @@ background-color: black;
 	
 }
 
+.contentAbout {
+	
+background-color: black;
+	padding: 15px;
+	position:absolute;
+	top:100px;
+	left:27%;
+	text-align:left;
+	
+	
+}
+
 a.button {
     
     padding:25px;
@@ -76,12 +88,29 @@ a.button:active {
 	top:70%;
 	left:47%;
 	}
+	
+	.aboutIcon2 {
+	position:absolute;
+	top:98%;
+	left:45%;
+	text-align:center:!important;
+	
+	}
 a.aboutIcon {
 color:rgba(255,255,255,.75)
 
 }
-a.aboutIcon:hover{
+a.about:hover{
 	color:white}
+	
+a.about {
+color:rgba(255,255,255,.75)
+
+}
+a.about:hover{
+	color:white}
+	
+	
 #soulStore {padding-right:33px;}
 
 #soulPlay {padding-right:39px;
