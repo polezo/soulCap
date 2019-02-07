@@ -10,6 +10,10 @@ The way it works is pretty simple. The user goes to our site, and can browse the
 
 Users can then visit our store to buy "showcase" souls. 
 
+# Relevant Branches/Repos/Smart Contract Addresses
+
+We are running the out-or-the-box 0x launch kit on AWS for our relayer for the moment. Repo for it can be found here:https://github.com/polezo/0x-launch-kit
+
 # Issues/known bugs
 
 It runs great in Chromium browsers, but has buggy styling on Firefox. Mobile stylesheets also leave a lot to be desired. Speaking of mobile, it doesn't work in most of the main mobile dApp browsers (it seems most of them do not allow webcam access yet), but does seem to function in Status for Android.
