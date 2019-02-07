@@ -12,7 +12,7 @@ Users can then visit our store to buy "showcase" souls.
 
 # Relevant Branches/Repos/Smart Contract Addresses
 
-We are running the out-or-the-box 0x launch kit on AWS for our relayer for the moment. Repo for it can be found here:https://github.com/polezo/0x-launch-kit
+We are running the out-or-the-box 0x launch kit on AWS for our relayer for the moment. Repo for it can be found here: https://github.com/polezo/0x-launch-kit
 
 Soul Minting Contract: https://etherscan.io/address/0xb52e21ca2e6d46832551b45eb60a63b0987d0c7a
 
