@@ -8,7 +8,7 @@ We are big fans of 0x, and also had an interest in experimenting with new token 
 
 The way it works is pretty simple. The user goes to our site, and can browse the various souls we have to offer--they take picture of themselves, and "entomb" this picture into a "soul" as an ERC721 for a small fee (.005 Eth, .0025 if the user holds ZRX in their wallet).
 
-Users can then visit our store to buy "showcase" souls. 
+*Note* at time of submission our deployed website may not be fully functionally, but it *should* work if you clone and run locally.
 
 # Relevant Branches/Repos/Smart Contract Addresses
 
@@ -19,6 +19,8 @@ Soul Minting Contract: https://etherscan.io/address/0xb52e21ca2e6d46832551b45eb6
 # Issues/known bugs
 
 It runs great in Chromium browsers, but has buggy styling on Firefox. Mobile stylesheets also leave **a lot** to be desired. Speaking of mobile, it doesn't work in most of the main mobile dApp browsers (it seems most of them do not allow webcam access yet), but does seem to function in Status for Android (although again, mobile layout is hideous)
+
+It probably goes without saying our soul store also needs work. We have the ability to buy ZRX, and you can obviously use that ZRX to get a discount on your soul minting, however, buying and selling souls is still a bit of a work in progress.
 
 # Other Idiosyncracies (image hosting)
 We thought for a while on how to best handle hosting for the image URI for the NFT. The best thing for the UX is almost certainly to just handle the hosting on our own, and this is something we still may do eventually for a later iteration. At the end of the day though, our long term preference is to have a flow to IPFS or Storj and not have any point of failure where the soul images could get lost. This is not something we could do in the scope of this hackathon, so in the mean time we just thought we'd allow the user to pick the service for hosting that they'd prefer to trust. Want to host your soul's image on your own hosting? Go ahead. Want something user friendly like imgur? That works to. 
