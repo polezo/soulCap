@@ -93,6 +93,35 @@
           //TODO make web3 call here.
           if(uri == ""){uri = "https://i.imgur.com/eFWUC1m.png"}
           if(soulname == ""){soulname == "Vanilla Soul"}
+                    window.web3 = new Web3(ethereum);
+                    console.log("web3: ", web3);
+
+                    const zrx_contract = "0xE41d2489571d322189246DaFA5ebDe1F4699F498";
+                      var tknAddress = (addr).substring(2);
+                      var contractData = ('0x70a08231000000000000000000000000' + tknAddress); //balanceOf()" becomes "0x70a08231
+                      const OWNER_ADDRESS = web3.eth.accounts[0];
+
+                      web3.eth.call({
+                        to: contractAddr,
+                        data: contractData
+                        }, function(err, result) {
+                      if (result) {
+                        var tokens = web3.utils.toBN(result).toString();
+                        console.log('zrx Owned: ' + web3.utils.fromWei(tokens, 'ether'));
+                        var CALCULATED_FEE_WEI = 5000000000000000;//0.005 wei
+                        if(tokens > 0){
+                          CALCULATED_FEE_WEI = 250000000000000;//.0025 wei
+                        }
+                        //make call to soulcapper contract
+                        const nftContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" })
+                        //captureSoul(address _to, string memory _name, string memory _URI, uint64 _type)
+                        const result = await nftContract.methods.captureSoul(OWNER_ADDRESS, TOKEN_NAME, SOUL_IMG_URI, SOUL_TYPE).send({ from: OWNER_ADDRESS, value: CALCULATED_FEE_WEI });
+                          console.log("Minted soul. Transaction: " + result.transactionHash)
+                      }
+                      else {
+                        console.log(err); // Dump errors here
+                      }
+                      });
         }
         </script>
     </body>
