@@ -31,5 +31,5 @@ This also of course means you want to, you could also host images not created on
 
 Clone repo on local machine 
 
-FaceFilter API requires webcam access and thus must be set up with an HTTPS server. In the command line from the root of the project folder, launch the httpServer.py, and visit https://localhost:4443. You may also have to click "advanced" in your browser to proceed with the unsigned certificate. Note you MUST type in http**s**, or it will not operate as expected.
+FaceFilter API requires webcam access and thus must be set up with an HTTPS server. In the command line from the root of the project folder, launch the httpServer.py, and visit https://localhost:4443. You may also have to click "advanced" in your browser to proceed with the unsigned certificate. Note you MUST type in http**S**, or it will not operate as expected.
 
