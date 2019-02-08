@@ -65,7 +65,7 @@ div.buttonAlign {
 	background-color: white;
 	position:absolute;
 	left:120px;
-	top:365px;
+	top:335px;
 	z-index: 2;
 	padding:3px;
 
@@ -75,7 +75,7 @@ div.buttonAlign {
 .buyButton {
 	position:absolute;
 	left:30px;
-	top:360px;
+	top:330px;
 	z-index: 2;
 }
 

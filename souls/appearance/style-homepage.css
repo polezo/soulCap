@@ -97,18 +97,18 @@ a.button:active {
 	
 	}
 a.aboutIcon {
-color:rgba(255,255,255,.75)
+color:rgba(255,255,255,.75);
 
 }
 a.about:hover{
-	color:white}
+	color:white;}
 	
 a.about {
-color:rgba(255,255,255,.75)
+color:rgba(255,255,255,.75);
 
 }
-a.about:hover{
-	color:white}
+a.abouticon:hover{
+	color:white;}
 	
 	
 #soulStore {padding-right:33px;}
