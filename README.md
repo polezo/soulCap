@@ -8,7 +8,7 @@ We are big fans of 0x, and also had an interest in experimenting with new token 
 
 The way it works is pretty simple. The user goes to our site, and can browse the various souls we have to offer--they take picture of themselves, and "entomb" this picture into a "soul" as an ERC721 for a small fee (.005 Eth, .0025 if the user holds ZRX in their wallet).
 
-~~*Note* at time of submission our deployed website may not have all functions deployed, but the core soul minting process and purchasing ZRX for a discount on soul minting should work if you clone and run locally.
+~~*Note* at time of submission our deployed website may not have all functions deployed, but the core soul minting process and purchasing ZRX for a discount on soul minting should work if you clone and run locally.~~
 
 Minting is confirmed live! Most of the other web 3 hooks still need a wee bit of tweaking tho. :)
 
