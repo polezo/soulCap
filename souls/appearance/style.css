@@ -136,3 +136,12 @@ input, label{
   /*when the button is pressed make it go down from 15 to 8px*/
   box-shadow: 0px 8px 0px 0px #82409D;
 }
+
+/*============ lookup  ==============*/
+.soulcard{
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  max-width: 40%;
+}
