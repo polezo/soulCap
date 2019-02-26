@@ -65,8 +65,10 @@
           </form>
         </div>
 
+        <script src='bignumber.min.js'></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js">  </script>
         <script type="text/javascript">
-
+        // var Web3 = require('./node_modules/web3/dist/web3.cjs.js');//ou cant use reuquire statically, ya dingus
         const NFT_CONTRACT_ADDRESS = "0xb52e21ca2e6d46832551b45eb60a63b0987d0c7a";
         const NFT_ABI = [ { "constant": true, "inputs": [ { "name": "interfaceId", "type": "bytes4" } ], "name": "supportsInterface", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function", "signature": "0x01ffc9a7" }, { "constant": true, "inputs": [ { "name": "tokenId", "type": "uint256" } ], "name": "getApproved", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function", "signature": "0x081812fc" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "tokenId", "type": "uint256" } ], "name": "approve", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0x095ea7b3" }, { "constant": false, "inputs": [ { "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "tokenId", "type": "uint256" } ], "name": "transferFrom", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0x23b872dd" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "captures_tracker", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function", "signature": "0x3614822e" }, { "constant": false, "inputs": [ { "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "tokenId", "type": "uint256" } ], "name": "safeTransferFrom", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0x42842e0e" }, { "constant": true, "inputs": [ { "name": "tokenId", "type": "uint256" } ], "name": "ownerOf", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function", "signature": "0x6352211e" }, { "constant": true, "inputs": [ { "name": "owner", "type": "address" } ], "name": "balanceOf", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function", "signature": "0x70a08231" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" } ], "name": "souls", "outputs": [ { "name": "body", "type": "address" }, { "name": "name", "type": "string" }, { "name": "uri", "type": "string" }, { "name": "soul_type", "type": "uint64" } ], "payable": false, "stateMutability": "view", "type": "function", "signature": "0x7f0df684" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "approved", "type": "bool" } ], "name": "setApprovalForAll", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0xa22cb465" }, { "constant": false, "inputs": [ { "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "tokenId", "type": "uint256" }, { "name": "_data", "type": "bytes" } ], "name": "safeTransferFrom", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0xb88d4fde" }, { "constant": true, "inputs": [ { "name": "owner", "type": "address" }, { "name": "operator", "type": "address" } ], "name": "isApprovedForAll", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function", "signature": "0xe985e9c5" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor", "signature": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_holder", "type": "address" }, { "indexed": false, "name": "_bal", "type": "uint256" }, { "indexed": false, "name": "_result", "type": "bool" } ], "name": "zrxChecked", "type": "event", "signature": "0x1b6aa5a2f963e1ecb5ef4843bf43e348bf842f1f14a03fd9310bbfdc2dbf7f3d" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_from", "type": "address" }, { "indexed": false, "name": "_name", "type": "string" }, { "indexed": false, "name": "_id", "type": "uint256" }, { "indexed": false, "name": "_uri", "type": "string" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Capped", "type": "event", "signature": "0x863d47942dde95dfdcf03c518c18c1498143b944f7a302e00063e1d0ce12d679" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_amount", "type": "uint256" }, { "indexed": false, "name": "_fee", "type": "uint256" } ], "name": "Paid", "type": "event", "signature": "0xef53713ee4f072f79f4d516084e3f4d15f2cde709d2091235b37ae719c272dd6" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_have", "type": "uint256" }, { "indexed": false, "name": "_of", "type": "uint256" } ], "name": "MaxCount", "type": "event", "signature": "0xb5222a096b8e4b7ec78aac61715e8996fcee833db147b39b099c906c49a647e7" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "from", "type": "address" }, { "indexed": true, "name": "to", "type": "address" }, { "indexed": true, "name": "tokenId", "type": "uint256" } ], "name": "Transfer", "type": "event", "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "owner", "type": "address" }, { "indexed": true, "name": "approved", "type": "address" }, { "indexed": true, "name": "tokenId", "type": "uint256" } ], "name": "Approval", "type": "event", "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "owner", "type": "address" }, { "indexed": true, "name": "operator", "type": "address" }, { "indexed": false, "name": "approved", "type": "bool" } ], "name": "ApprovalForAll", "type": "event", "signature": "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31" }, { "constant": false, "inputs": [ { "name": "user", "type": "address" } ], "name": "hasZRX", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0x76b53c6a" }, { "constant": false, "inputs": [ { "name": "_to", "type": "address" }, { "name": "_name", "type": "string" }, { "name": "_URI", "type": "string" }, { "name": "_type", "type": "uint64" } ], "name": "captureSoul", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function", "signature": "0xb4497861" }, { "constant": false, "inputs": [ { "name": "_id", "type": "uint256" }, { "name": "_name", "type": "string" } ], "name": "setName", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0xfe55932a" }, { "constant": false, "inputs": [ { "name": "_itemId", "type": "uint256" }, { "name": "_to", "type": "address" } ], "name": "tradeSoul", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function", "signature": "0x6cc0370f" }, { "constant": false, "inputs": [ { "name": "_payto", "type": "address" } ], "name": "cashout", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0x4846ff7e" }, { "constant": false, "inputs": [ { "name": "erc20_contracts", "type": "address[]" } ], "name": "withdraw", "outputs": [ { "name": "result", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0xbd5dec98" }, { "constant": false, "inputs": [ { "name": "_transfer_percent_fee", "type": "uint256" }, { "name": "_minting_fee_wei", "type": "uint256" }, { "name": "_ZRX_erc20_contrct", "type": "address" }, { "name": "_ZRX_discount_percent", "type": "uint16" }, { "name": "_max_souls_per_body", "type": "uint256" } ], "name": "setEverything", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function", "signature": "0x115fa416" } ];
 
@@ -90,6 +92,7 @@
                 window.web3 = new Web3(web3.currentProvider);
                 // Acccounts always exposed
                 //web3.eth.sendTransaction({/* ... */});
+                console.log("current provider being used");
             }
             // Non-dapp browsers...
             else {
@@ -100,8 +103,8 @@
         const link_input = dataForm.elements['URI'];
         const name_input = dataForm.elements['name'];
 
-        dataForm.onsubmit = function(event) {
-          event.preventDefault();//do not refresh page.
+        dataForm.onsubmit = function(event) { //WHEN FORM IS SUBMITTED DO THIS
+          event.preventDefault(); //do not refresh page.
           var uri = link_input.value;
           var soulname = name_input.value;
           console.log(uri, soulname);
@@ -110,36 +113,64 @@
           if(uri == ""){uri = "https://i.imgur.com/eFWUC1m.png"}
           if(soulname == ""){soulname == "Vanilla Soul"}
 
+          var web3 = new Web3(ethereum);
+          console.log("web3: ", web3);
 
-                    window.web3 = new Web3(ethereum);
-                    console.log("web3: ", web3);
 
-                    const zrx_contract = "0xE41d2489571d322189246DaFA5ebDe1F4699F498";
-                      var tknAddress = (addr).substring(2);
-                      var contractData = ('0x70a08231000000000000000000000000' + tknAddress); //balanceOf()" becomes "0x70a08231
-                      const OWNER_ADDRESS = web3.eth.accounts[0];
+            const zrx_contract = "0xE41d2489571d322189246DaFA5ebDe1F4699F498";
+             //balanceOf()" becomes "0x70a08231
 
-                      web3.eth.call({
-                        to: contractAddr,
-                        data: contractData
-                        }, function(err, result) {
-                      if (result) {
-                        var tokens = web3.utils.toBN(result).toString();
-                        console.log('zrx Owned: ' + web3.utils.fromWei(tokens, 'ether'));
-                        var CALCULATED_FEE_WEI = 5000000000000000;//0.005 wei
-                        if(tokens > 0){
-                          CALCULATED_FEE_WEI = 250000000000000;//.0025 wei
-                        }
-                        //make call to soulcapper contract
-                        const nftContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" })
-                        //captureSoul(address _to, string memory _name, string memory _URI, uint64 _type)
-                        const result = await nftContract.methods.captureSoul(OWNER_ADDRESS, TOKEN_NAME, SOUL_IMG_URI, SOUL_TYPE).send({ from: OWNER_ADDRESS, value: CALCULATED_FEE_WEI });
-                          console.log("Minted soul. Transaction: " + result.transactionHash)
+            if (window.ethereum) {
+                window.web3 = new Web3(ethereum);
+                try {
+                    // Request account access if needed
+                     ethereum.enable();
+                    // Acccounts now exposed
+                    console.log("account:", window.web3.givenProvider.selectedAddress);
+                    const OWNER_ADDRESS = window.web3.givenProvider.selectedAddress; //window.web3.accounts[0];
+                    var tknAddress = (OWNER_ADDRESS).substring(2);
+                    var contractData = ('0x70a08231000000000000000000000000' + tknAddress);
+                    //web3.eth.sendTransaction({/* ... */});
+                    var zrxCheck =  web3.eth.call({
+                      to: zrx_contract,
+                      data: contractData
+                    }, function( err, data) {
+                    if (data) {
+                      //console.log("i though web3/utils = ", web3.utils)
+                      let bntoken = new BigNumber(data);
+                      var tokens = bntoken.toString();
+                      console.log('zrx Owned: ' + tokens);
+                      var CALCULATED_FEE_WEI = 5000000000000000;//0.005 wei
+                      if(tokens > 0){
+                        CALCULATED_FEE_WEI =   2500000000000000;//.0025 wei
                       }
-                      else {
-                        console.log(err); // Dump errors here
-                      }
-                });
+                      //make call to soulcapper contract
+                      const nftContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" })//brakes because web3 thinks its 0.20.3
+                      //captureSoul(address _to, string memory _name, string memory _URI, uint64 _type)
+                      const result = nftContract.methods.captureSoul(OWNER_ADDRESS, soulname, uri, 3).send({ from: OWNER_ADDRESS, value: CALCULATED_FEE_WEI });
+                        console.log("Minted soul. Transaction: " + result.transactionHash)
+                    }
+                    else {
+                      console.log("err", data); // Dump errors here
+                    }
+                    });
+                } catch (error) {
+                    // User denied account access...
+                    console.log("error catch: ", error);
+                }
+            }
+            // Legacy dapp browsers...
+            else if (window.web3) {
+                window.web3 = new Web3(web3.currentProvider);
+                // Acccounts always exposed
+                //web3.eth.sendTransaction({/* ... */});
+                console.log("current provider being used");
+            }
+            // Non-dapp browsers...
+            else {
+                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+            }
+
         }
         </script>
     </body>
