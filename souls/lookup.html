@@ -21,10 +21,10 @@
     </div>
 
     <div class="content">
-      <form class="lookupForm" method="post">
+      <form class="lookupForm" >
         <h2>Soul Library</h2>
         <label for="idlookup">Soul ID</label>
-        <input type="text" name="idlookup" placeholder="123">
+        <input type="text" name="idlookup" placeholder="1234">
         <button type="submit" name="button" class="btn purple">look up</button>
       </form>
     </div>
@@ -54,6 +54,7 @@
                 await ethereum.enable();
                 // Acccounts now exposed
                 console.log(ethereum.accounts[0]);
+                const OWNER_ADDRESS = window.web3.givenProvider.selectedAddress; //window.web3.accounts[0];
                 //web3.eth.sendTransaction({/* ... */});
             } catch (error) {
                 // User denied account access...
@@ -90,9 +91,10 @@
       //function that creates new soul html elements give soul = {"image": "img uri","name": "soul name"}
 
       const appendNewSoul = function(soul) {
+        console.log("adding soul: ", soul);
         const newListItem = document.createElement('div'); //${soul.image}
         newListItem.className = "soulcard";
-        newListItem.innerHTML =  '<div class="img-holder"><img src="' + soul.image + '" alt="'+ soul.name + '"></div><h3>' + soul.name + '</h3>';
+        newListItem.innerHTML =  '<h3>Soul Number ' + soul.id + '</h3><br><div class="img-holder"><img class="soul_img" src="' + soul.image + '" alt="'+ soul.name + '"></div><h3>' + soul.name + '</h3>';
         soulgrid.appendChild(newListItem);
       }
 
@@ -100,18 +102,27 @@
       soulform.onsubmit = function(event) {
         // stop our form submission from refreshing the page
         event.preventDefault();
+        const OWNER_ADDRESS = window.web3.givenProvider.selectedAddress;
+        //console.log("owner = ", OWNER_ADDRESS);
 
         // get soul value and add it to the list.
-        console.log("id = ", soulInput.value);
+        //console.log("id = ", soulInput.value);
+        const lookup_id = soulInput.value;
         var web3 = new Web3(ethereum);
-        const soulContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000" });
-        var rawSoul = {};
+        const soulContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS);
+        var rawSoul = {"image": "https://i.imgur.com/spjbzVT.png", "name": "soul name", "id":"-1"};
 
-        soulContract.methods.souls(soulInput.value).call().then((result) => {
-            console.log("result: ", result);
+        soulContract.methods.souls(soulInput.value).call({from: OWNER_ADDRESS}).then(function(result) {
+            //console.log("result: ", result);
+            if(result[0] == "0x0000000000000000000000000000000000000000"){
+              //TODO display popup that it didnt work
+            }else{
+              rawSoul["image"] = result[2];
+              rawSoul["name"] = result[1];
+              rawSoul["id"] = lookup_id;
+              appendNewSoul(rawSoul);
+            }
         });
-
-        appendNewSoul({"image": "https://i.imgur.com/spjbzVT.png","name": "soul name"});
 
         // reset form
         soulInput.value = '';
