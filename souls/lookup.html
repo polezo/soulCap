@@ -38,11 +38,29 @@
             <img src="https://i.imgur.com/spjbzVT.png" alt="alt text is name">
           </div>
           <h3>soul name</h3>
-          <button type="button" name="transfer-button" onClick="transfer_soul()" class="small-btn purple">🎁 Send</button>
+          <button type="button" name="transfer-button" onClick="toggleModal()" class="small-btn purple">🎁 Send</button>
         </div> -->
       </div>
     </div>
 
+    <!-- Modal Transfer Content -->
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close-button">×</span>
+        <h1>Send your soul somewhere else.</h1>
+        <form class="lookupForm" id="transfer_form">
+          <label for="soul_number">Soul Number</label>
+          <input type="number" name="soul_number" value="" id="soul_number_input">
+          <br>
+          <label for="address">Recipient Ethereum Address</label>
+          <input type="text" id="to_Address" name="address" placeholder="0x123abc">
+          <br>
+          <button type="button" name="send_button" onClick="transfer_soul()">📫 Submit</button>
+        </form>
+        <div id="send_result">
+        </div>
+      </div>
+    </div>
 
 
     <script type="text/javascript">
@@ -96,7 +114,7 @@
         console.log("adding soul: ", soul);
         const newListItem = document.createElement('div'); //${soul.image}
         newListItem.className = "soulcard";
-        newListItem.innerHTML =  '<h3>Soul Number ' + soul.id + '</h3><br><div class="img-holder"><img class="soul_img" src="' + soul.image + '" alt="'+ soul.name + '"></div><h3>' + soul.name + '</h3>' + '  <button type="button" name="transfer-button" onClick="transfer_soul(' + soul.id + ')" class="small-btn purple">🎁 Send</button>';
+        newListItem.innerHTML =  '<h3>Soul Number ' + soul.id + '</h3><br><div class="img-holder"><img class="soul_img" src="' + soul.image + '" alt="'+ soul.name + '"></div><h3>' + soul.name + '</h3>' + '  <button type="button" name="transfer-button" onClick="toggleModal(' + soul.id + ')" class="small-btn purple">🎁 Send</button>';
         soulgrid.appendChild(newListItem);
       }
 
@@ -131,10 +149,52 @@
         soulInput.focus();
       };
 
+      var modal = document.querySelector(".modal");
+      var closeButton = document.querySelector(".close-button");
 
-      function transfer_soul(soul_id){
-        //console.log("transfer: ", soul_id);
+      //every transfer button on every card starts this function.
+      function toggleModal(soul_id) {
+          modal.classList.toggle("show-modal");
+          id_input = document.getElementById('soul_number_input');
+          id_input.value = soul_id;
       }
+
+      //Close modal with x button
+      function toggleModalOff(){
+         modal.classList.toggle("show-modal");
+      }
+
+      // Main transer function, which makes web3 call to actually move token
+      function transfer_soul(){
+        const id_input = document.getElementById('soul_number_input').value;
+        const to_address = document.getElementById('to_Address').value;
+        //console.log(id_input);
+
+        // stop our form submission from refreshing the page
+        event.preventDefault();
+
+        const OWNER_ADDRESS = window.web3.givenProvider.selectedAddress;
+        //new instance of contract needed.
+        var web3 = new Web3(ethereum);
+        const soulContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS);
+
+        //make transfer call with user input address and ID
+        soulContract.methods.tradeSoul(id_input, to_address).call({from: OWNER_ADDRESS, value: 0}).then(function(result) {
+          console.log("transfer result: ", result);
+          //let the user know where to confirm
+          var output = document.getElementById('send_result');
+
+          //TODO better error handle for when transfer fails
+          if (result) {
+            output.innerHTML = "Soul Sent! Check out " + result.transactionHash;
+          }else{
+              output.innerHTML = "Send Failed. Perhaps you dont own that soul?";
+          }
+        });
+      }
+
+      // Allow close button to close modal popup
+      closeButton.addEventListener("click", toggleModalOff);
 
     </script>
   </body>

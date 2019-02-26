@@ -138,7 +138,7 @@
                         CALCULATED_FEE_WEI =   2500000000000000;//.0025 wei
                       }
                       //make call to soulcapper contract
-                      const nftContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" })//brakes because web3 thinks its 0.20.3
+                      const nftContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" })
                       //captureSoul(address _to, string memory _name, string memory _URI, uint64 _type)
                       const result = nftContract.methods.captureSoul(OWNER_ADDRESS, soulname, uri, 3).send({ from: OWNER_ADDRESS, value: CALCULATED_FEE_WEI });
                         console.log("Minted soul. Transaction: " + result.transactionHash)
