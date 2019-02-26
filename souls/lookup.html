@@ -175,11 +175,12 @@
 
         const OWNER_ADDRESS = window.web3.givenProvider.selectedAddress;
         //new instance of contract needed.
+        ethereum.enable();
         var web3 = new Web3(ethereum);
-        const soulContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS);
+        const soulContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" });
 
         //make transfer call with user input address and ID
-        soulContract.methods.tradeSoul(id_input, to_address).call({from: OWNER_ADDRESS, value: 0}).then(function(result) {
+        soulContract.methods.tradeSoul(id_input, to_address).send({from: OWNER_ADDRESS, value: 0}).then(function(result) {
           console.log("transfer result: ", result);
           //let the user know where to confirm
           var output = document.getElementById('send_result');
