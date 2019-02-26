@@ -122,6 +122,23 @@ input, label{
   box-shadow: 0px 1px 0px 0px;
 }
 
+.small-btn{
+  border-radius: 3px;
+  padding: 9px 17px;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 12px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.small-btn:active {
+  transform: translate(0px, 3px);
+  -webkit-transform: translate(0px, 3px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
 .purple {
   background-color: #9b59b6;
   /*the 15px is how high up the button appears*/

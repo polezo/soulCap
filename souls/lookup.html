@@ -21,7 +21,7 @@
     </div>
 
     <div class="content">
-      <form class="lookupForm" >
+      <form class="lookupForm" id="soul_form">
         <h2>Soul Library</h2>
         <label for="idlookup">Soul ID</label>
         <input type="text" name="idlookup" placeholder="1234">
@@ -32,11 +32,13 @@
     <div class="content">
       <div class="soulgrid" id="soulgrid">
         <!-- souls go here -->
-        <!-- <div class="soulcard">
+       <!-- <div class="soulcard">
+          <h3>soul title</h3>
           <div class="img-holder">
-            <img src="" alt="">
+            <img src="https://i.imgur.com/spjbzVT.png" alt="alt text is name">
           </div>
-          <h3></h3>
+          <h3>soul name</h3>
+          <button type="button" name="transfer-button" onClick="transfer_soul()" class="small-btn purple">🎁 Send</button>
         </div> -->
       </div>
     </div>
@@ -84,7 +86,7 @@
 
 
 
-      const soulform = document.forms[0];
+      const soulform = document.getElementById('soul_form');
       const soulgrid = document.getElementById('soulgrid');
       const soulInput = soulform.elements['idlookup'];
 
@@ -94,7 +96,7 @@
         console.log("adding soul: ", soul);
         const newListItem = document.createElement('div'); //${soul.image}
         newListItem.className = "soulcard";
-        newListItem.innerHTML =  '<h3>Soul Number ' + soul.id + '</h3><br><div class="img-holder"><img class="soul_img" src="' + soul.image + '" alt="'+ soul.name + '"></div><h3>' + soul.name + '</h3>';
+        newListItem.innerHTML =  '<h3>Soul Number ' + soul.id + '</h3><br><div class="img-holder"><img class="soul_img" src="' + soul.image + '" alt="'+ soul.name + '"></div><h3>' + soul.name + '</h3>' + '  <button type="button" name="transfer-button" onClick="transfer_soul(' + soul.id + ')" class="small-btn purple">🎁 Send</button>';
         soulgrid.appendChild(newListItem);
       }
 
@@ -110,7 +112,7 @@
         const lookup_id = soulInput.value;
         var web3 = new Web3(ethereum);
         const soulContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS);
-        var rawSoul = {"image": "https://i.imgur.com/spjbzVT.png", "name": "soul name", "id":"-1"};
+        var rawSoul = {"image": "https://i.imgur.com/spjbzVT.png", "name": "soul name", "id":-1};
 
         soulContract.methods.souls(soulInput.value).call({from: OWNER_ADDRESS}).then(function(result) {
             //console.log("result: ", result);
@@ -119,7 +121,7 @@
             }else{
               rawSoul["image"] = result[2];
               rawSoul["name"] = result[1];
-              rawSoul["id"] = lookup_id;
+              rawSoul["id"] = Number(lookup_id);
               appendNewSoul(rawSoul);
             }
         });
@@ -128,6 +130,11 @@
         soulInput.value = '';
         soulInput.focus();
       };
+
+
+      function transfer_soul(soul_id){
+        //console.log("transfer: ", soul_id);
+      }
 
     </script>
   </body>
