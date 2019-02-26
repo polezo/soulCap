@@ -1,156 +1,241 @@
- a {color: #eee; text-decoration: none}
-a:hover {color: blue;}
-body {overflow: auto; overflow-y: auto;
-    background-color: white;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: contain;
-    margin: 0px;}
-#jeeFaceFilterCanvas {
-    z-index: 10;
-    position: absolute;
-    max-height: 100%;
-    max-width: 100%;
-    left: 50%;
-    top: 50%;
-    width: 100vmin;
-    transform: translate(-50%, -50%) rotateY(180deg);
-}
-.button {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-    padding:7px;
-    text-decoration: none;
-    color: initial;
-}
+ a {
+   color: #eee;
+   text-decoration: none
+ }
 
-input[type="button"] {padding:5px;}
+ a:hover {
+   color: blue;
+ }
 
-.button:hover {color:blue;}
+ body {
+   overflow: auto;
+   overflow-y: auto;
+   background-color: white;
+   background-attachment: fixed;
+   background-position: center;
+   background-size: contain;
+   margin: 0px;
+ }
 
-	#flashingGif {
-		z-index: 11;
-    position: absolute;
-    left: 35%;
-    top: 20%;
-	}
+ #jeeFaceFilterCanvas {
+   z-index: 10;
+   position: absolute;
+   max-height: 100%;
+   max-width: 100%;
+   left: 50%;
+   top: 50%;
+   width: 100vmin;
+   transform: translate(-50%, -50%) rotateY(180deg);
+ }
 
-div.buttonAlign {
-	z-index: 11;
-    position: absolute;
-    left: 38%;
-    top: 95%;
-	}
-@media (max-width: 787px) {
-    #jeeFaceFilterCanvas {
-        right: 0px;
-        top: 60px;
-        transform: rotateY(180deg);
-    }
-}
+ .button {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 12px;
+   -webkit-appearance: button;
+   -moz-appearance: button;
+   appearance: button;
+   padding: 7px;
+   text-decoration: none;
+   color: initial;
+ }
 
-.soulImage {
-	height:200px;
-	width:200px;
-}
-.soulForSale{
+ input[type="button"] {
+   padding: 5px;
+ }
 
-}
-.priceContainers {
-	height:18px;
-	width:50px;
-	background-color: white;
-	position:absolute;
-	left:120px;
-	top:365px;
-	z-index: 2;
-	padding:3px;
+ .button:hover {
+   color: blue;
+ }
 
-	text-align:center;
+ #flashingGif {
+   z-index: 11;
+   position: absolute;
+   left: 35%;
+   top: 20%;
+ }
 
-}
-.buyButton {
-	position:absolute;
-	left:30px;
-	top:360px;
-	z-index: 2;
-}
+ div.buttonAlign {
+   z-index: 11;
+   position: absolute;
+   left: 38%;
+   top: 95%;
+ }
 
-.webCamWarn {
-	background-color:white;
-	color:black;
-	font-size:50px;
-	padding:none;
-	font-weight:900;
-	font-family:Arial, Helvetica, sans-serif;
-	width:600px;
-	text-align:center;
-	left: 34%;
-    top: 10%;
-	position:absolute;
-	}
-}
+ @media (max-width: 787px) {
+   #jeeFaceFilterCanvas {
+     right: 0px;
+     top: 60px;
+     transform: rotateY(180deg);
+   }
+ }
 
-.submitter{
-  margin: 15px;
-  color: #fff;
-  font-size: large;
-}
+ .soulImage {
+   height: 200px;
+   width: 200px;
+ }
 
-input, label{
-  margin: 5px;
-}
+ .soulForSale {}
 
-/* start da css for da buttons */
-.btn {
-  border-radius: 5px;
-  padding: 15px 25px;
-  font-size: 22px;
-  text-decoration: none;
-  margin: 20px;
-  color: #fff;
-  position: relative;
-  display: inline-block;
-}
+ .priceContainers {
+   height: 18px;
+   width: 50px;
+   background-color: white;
+   position: absolute;
+   left: 120px;
+   top: 365px;
+   z-index: 2;
+   padding: 3px;
+   text-align: center;
+ }
 
-.btn:active {
-  transform: translate(0px, 5px);
-  -webkit-transform: translate(0px, 5px);
-  box-shadow: 0px 1px 0px 0px;
-}
+ .buyButton {
+   position: absolute;
+   left: 30px;
+   top: 360px;
+   z-index: 2;
+ }
 
-.purple {
-  background-color: #9b59b6;
-  /*the 15px is how high up the button appears*/
-  box-shadow: 0px 15px 0px 0px #82409D;
-}
+ .webCamWarn {
+   background-color: white;
+   color: black;
+   font-size: 50px;
+   padding: none;
+   font-weight: 900;
+   font-family: Arial, Helvetica, sans-serif;
+   width: 600px;
+   text-align: center;
+   left: 34%;
+   top: 10%;
+   position: absolute;
+ }
+ }
 
-.purple:hover {
-  background-color: #B573D0;
-}
+ .submitter {
+   margin: 15px;
+   color: #fff;
+   font-size: large;
+ }
 
-.purple:active{
-  /*when the button is pressed make it go down from 15 to 8px*/
-  box-shadow: 0px 8px 0px 0px #82409D;
-}
+ input, label {
+   margin: 5px;
+ }
 
-/*============ lookup  ==============*/
-.soulgrid{
-  align-items: center;
-}
+ /* start da css for da buttons */
+ .btn {
+   border-radius: 5px;
+   padding: 15px 25px;
+   font-size: 22px;
+   text-decoration: none;
+   margin: 20px;
+   color: #fff;
+   position: relative;
+   display: inline-block;
+ }
 
-.soulcard{
-  padding: 10px;
-  margin: 10px;
-  border: 2px solid white;
-  border-radius: 5px;
-  max-width: 40%;
-  color: #fff;
-}
+ .btn:active {
+   transform: translate(0px, 5px);
+   -webkit-transform: translate(0px, 5px);
+   box-shadow: 0px 1px 0px 0px;
+ }
 
-.soul_img{
-  max-width: 90%;
-}
+ .small-btn {
+   border-radius: 3px;
+   padding: 9px 17px;
+   font-size: 14px;
+   text-decoration: none;
+   margin: 12px;
+   color: #fff;
+   position: relative;
+   display: inline-block;
+ }
+
+ .small-btn:active {
+   transform: translate(0px, 3px);
+   -webkit-transform: translate(0px, 3px);
+   box-shadow: 0px 1px 0px 0px;
+ }
+
+ .purple {
+   background-color: #9b59b6;
+   /*the 15px is how high up the button appears*/
+   box-shadow: 0px 15px 0px 0px #82409D;
+ }
+
+ .purple:hover {
+   background-color: #B573D0;
+ }
+
+ .purple:active {
+   /*when the button is pressed make it go down from 15 to 8px*/
+   box-shadow: 0px 8px 0px 0px #82409D;
+ }
+
+ /*============ lookup  ==============*/
+ .soulgrid {
+   align-items: center;
+ }
+
+ .soulcard {
+   padding: 10px;
+   margin: 10px;
+   border: 2px solid white;
+   border-radius: 5px;
+   max-width: 40%;
+   color: #fff;
+ }
+
+ .soul_img {
+   max-width: 90%;
+ }
+
+ /*=========================== Modal Content for Transfers =====================*/
+ .modal {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   opacity: 0;
+   visibility: hidden;
+   transform: scale(1.1);
+   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+ }
+
+ .modal-content {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: white;
+   padding: 1rem 1.5rem;
+   width: 24rem;
+   border-radius: 0.5rem;
+   color: #000;
+ }
+
+ .close-button {
+   float: right;
+   width: 1.5rem;
+   line-height: 1.5rem;
+   text-align: center;
+   cursor: pointer;
+   border-radius: 0.25rem;
+   background-color: lightgray;
+ }
+
+ .close-button:hover {
+   background-color: darkgray;
+ }
+
+ .show-modal {
+   opacity: 1;
+   visibility: visible;
+   transform: scale(1.0);
+   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+ }
+
+ .modal h1 {
+   /*inside modal text*/
+   font-size: 15px;
+ }
